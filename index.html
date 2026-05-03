@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Open Sky Real Estate — Luxury Properties</title>
+<meta name="description" content="Discover the world's most extraordinary luxury properties. Open Sky Real Estate — where premium living meets the horizon.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+.custom-popup .leaflet-popup-content-wrapper{background:transparent;border:none;box-shadow:none;padding:0}
+.custom-popup .leaflet-popup-tip{display:none}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="logo">OPEN<span>SKY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#listings">Properties</a></li>
+    <li><a href="#map-section">Map</a></li>
+    <li><a href="#calculator">Calculator</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg" style="background-image:url('assets/hero_villa.png')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ The World's Finest Properties</div>
+    <h1 class="hero-title">Where Luxury<br><em>Meets the Horizon</em></h1>
+    <p class="hero-sub">Curated ultra-premium real estate for those who demand the extraordinary.</p>
+    <div class="search-float">
+      <div class="search-group">
+        <label>Location</label>
+        <select id="sLoc"><option value="">Any City</option><option>Mumbai</option><option>Bengaluru</option><option>Gurgaon</option></select>
+      </div>
+      <div class="search-group">
+        <label>Type</label>
+        <select id="sType"><option value="">Any Type</option><option>Penthouse</option><option>Villa</option><option>Mansion</option><option>Condo</option><option>Estate</option></select>
+      </div>
+      <div class="search-group">
+        <label>Max Price</label>
+        <select id="sPrice"><option value="">Any Price</option><option value="500000000">Up to ₹50 Cr</option><option value="1000000000">Up to ₹100 Cr</option><option value="2500000000">Up to ₹250 Cr</option><option value="5000000000">Up to ₹500 Cr</option></select>
+      </div>
+      <div class="search-group">
+        <label>Min Beds</label>
+        <select id="sBeds"><option value="">Any</option><option value="3">3+</option><option value="5">5+</option><option value="7">7+</option></select>
+      </div>
+      <button class="search-btn" id="searchBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:6px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
+    </div>
+  </div>
+</section>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal"><div class="stat-num">₹68k Cr+</div><div class="stat-label">Total Sales Volume</div></div>
+  <div class="stat-item reveal"><div class="stat-num">2,400+</div><div class="stat-label">Properties Sold</div></div>
+  <div class="stat-item reveal"><div class="stat-num">18</div><div class="stat-label">Years of Excellence</div></div>
+  <div class="stat-item reveal"><div class="stat-num">97%</div><div class="stat-label">Client Satisfaction</div></div>
+</div>
+<!-- LISTINGS -->
+<section class="section" id="listings">
+  <div class="section-header">
+    <div>
+      <div class="section-tag reveal">— Featured Listings</div>
+      <h2 class="section-title reveal">Exceptional <em>Properties</em></h2>
+      <p class="section-sub reveal">Each property is handpicked for its architectural excellence and unrivaled lifestyle offering.</p>
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="All">All</button>
+      <button class="filter-btn" data-filter="Penthouse">Penthouse</button>
+      <button class="filter-btn" data-filter="Villa">Villa</button>
+      <button class="filter-btn" data-filter="Mansion">Mansion</button>
+      <button class="filter-btn" data-filter="Condo">Condo</button>
+      <button class="filter-btn" data-filter="Estate">Estate</button>
+    </div>
+  </div>
+  <div class="property-grid" id="propertyGrid"></div>
+</section>
+<!-- MAP -->
+<section class="section" id="map-section" style="padding-top:0">
+  <div class="section-header">
+    <div>
+      <div class="section-tag reveal">— Explore</div>
+      <h2 class="section-title reveal">Properties on the <em>Map</em></h2>
+    </div>
+  </div>
+  <div class="map-wrap reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7544.756285810543!2d72.8258334!3d19.0596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c938103d8a71%3A0x6e8e50b1c6742517!2sBandra%20West%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1714555000000!5m2!1sen!2sin" width="100%" height="500" style="border:0; border-radius:16px; filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+<!-- CALCULATOR -->
+<section class="section" id="calculator">
+  <div class="section-header">
+    <div>
+      <div class="section-tag reveal">— Tools</div>
+      <h2 class="section-title reveal">Mortgage <em>Calculator</em></h2>
+      <p class="section-sub reveal">Estimate your monthly payments with our intelligent mortgage tool.</p>
+    </div>
+  </div>
+  <div class="calc-wrap reveal">
+    <div class="calc-form">
+      <div class="field">
+        <label>Property Price</label>
+        <input type="range" id="calcPrice" min="5000000" max="5000000000" step="1000000" value="500000000">
+        <div class="field-val"><span>Price</span><span id="priceVal">₹50 Cr</span></div>
+      </div>
+      <div class="field">
+        <label>Down Payment (%)</label>
+        <input type="range" id="calcDp" min="5" max="50" step="1" value="20">
+        <div class="field-val"><span>Down</span><span id="dpVal">20%</span></div>
+      </div>
+      <div class="field">
+        <label>Interest Rate (%)</label>
+        <input type="range" id="calcRate" min="2" max="12" step="0.1" value="6.5">
+        <div class="field-val"><span>Rate</span><span id="rateVal">6.5%</span></div>
+      </div>
+      <div class="field">
+        <label>Loan Term</label>
+        <input type="range" id="calcTerm" min="10" max="30" step="5" value="30">
+        <div class="field-val"><span>Term</span><span id="termVal">30 yr</span></div>
+      </div>
+    </div>
+    <div class="calc-result">
+      <div class="monthly-pay" id="monthlyPay">₹0</div>
+      <div class="monthly-label">Estimated Monthly Payment</div>
+      <div class="pay-breakdown">
+        <div class="pay-item"><div class="pay-item-num" id="principalPay">₹0</div><div class="pay-item-label">Loan Amount</div></div>
+        <div class="pay-item"><div class="pay-item-num" id="interestPay">₹0</div><div class="pay-item-label">Total Interest</div></div>
+        <div class="pay-item"><div class="pay-item-num" id="totalPay">₹0</div><div class="pay-item-label">Total Payment</div></div>
+        <div class="pay-item"><div class="pay-item-num" id="termVal2" style="font-family:'Cormorant Garamond',serif;font-size:1.5rem">30 yr</div><div class="pay-item-label">Loan Term</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- AGENTS -->
+<section class="section" id="agents" style="background:rgba(255,255,255,0.02)">
+  <div class="section-header">
+    <div>
+      <div class="section-tag reveal">— Our Team</div>
+      <h2 class="section-title reveal">Expert <em>Agents</em></h2>
+      <p class="section-sub reveal">Work with the best in the business. Our agents set the global standard for luxury real estate advisory.</p>
+    </div>
+  </div>
+  <div class="agents-grid" id="agentsGrid"></div>
+</section>
+<!-- PARTNERS -->
+<div style="background:rgba(255,255,255,0.01);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);padding:40px 60px">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:40px;opacity:0.4;filter:grayscale(1)">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" style="height:24px">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" style="height:20px">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" style="height:22px">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" style="height:18px">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" style="height:20px">
+  </div>
+</div>
+<!-- REVIEWS -->
+<section class="section" id="reviews">
+  <div class="section-header">
+    <div>
+      <div class="section-tag reveal">— Testimonials</div>
+      <h2 class="section-title reveal">Trusted by <em>Thousands</em></h2>
+      <p class="section-sub reveal">Our commitment to excellence is reflected in the words of those we serve.</p>
+    </div>
+    <div class="reveal" style="text-align:right">
+      <div style="font-size:2rem;color:var(--gold);font-family:'Cormorant Garamond',serif">4.9/5</div>
+      <div style="color:var(--text-muted);font-size:.7rem;text-transform:uppercase;letter-spacing:2px">On Google Reviews</div>
+      <div style="color:var(--gold);margin-top:8px">★★★★★</div>
+    </div>
+  </div>
+  <div class="property-grid">
+    <div class="agent-card reveal" style="text-align:left;animation-delay:0s">
+      <div style="color:var(--gold);margin-bottom:16px">★★★★★</div>
+      <p style="color:var(--text-muted);line-height:1.7;font-style:italic;margin-bottom:24px">"Open Sky redefined my expectations of a real estate agency. Their attention to detail and market insight is simply unparalleled."</p>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:600">JD</div>
+        <div><div style="font-size:.85rem;font-weight:600">James Dalton</div><div style="font-size:.7rem;color:var(--text-muted)">CEO, TechVision</div></div>
+      </div>
+    </div>
+    <div class="agent-card reveal" style="text-align:left;animation-delay:0.2s">
+      <div style="color:var(--gold);margin-bottom:16px">★★★★★</div>
+      <p style="color:var(--text-muted);line-height:1.7;font-style:italic;margin-bottom:24px">"Finding a penthouse in Mumbai was a breeze with Open Sky. They managed everything from virtual tours to legal paperwork seamlessly."</p>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:600">SM</div>
+        <div><div style="font-size:.85rem;font-weight:600">Sarah Mehta</div><div style="font-size:.7rem;color:var(--text-muted)">International Investor</div></div>
+      </div>
+    </div>
+    <div class="agent-card reveal" style="text-align:left;animation-delay:0.4s">
+      <div style="color:var(--gold);margin-bottom:16px">★★★★★</div>
+      <p style="color:var(--text-muted);line-height:1.7;font-style:italic;margin-bottom:24px">"The best in the business. Their property selection is truly elite. Highly recommended for anyone looking for ultra-luxury homes."</p>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:600">RL</div>
+        <div><div style="font-size:.85rem;font-weight:600">Robert Lang</div><div style="font-size:.7rem;color:var(--text-muted)">Luxury Architect</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <div>
+      <div class="section-tag reveal">— Get In Touch</div>
+      <h2 class="section-title reveal">Start Your <em>Journey</em></h2>
+    </div>
+  </div>
+  <div class="contact-wrap reveal">
+    <div>
+      <p style="color:var(--text-muted);line-height:1.9;margin-bottom:40px">Whether you're seeking your next trophy home, looking to list an exceptional property, or simply exploring the market — our team is at your service 24 hours a day, 7 days a week.</p>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;gap:20px;align-items:center"><div style="width:48px;height:48px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">📍</div><div><div style="font-size:.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headquarters</div><div style="color:var(--text-muted);font-size:.9rem">Lodha Altamount, Altamount Road, Mumbai, MH 400026</div></div></div>
+        <div style="display:flex;gap:20px;align-items:center"><div style="width:48px;height:48px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">📞</div><div><div style="font-size:.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Phone</div><div style="color:var(--text-muted);font-size:.9rem">+91 (22) 6655-0100</div></div></div>
+        <div style="display:flex;gap:20px;align-items:center"><div style="width:48px;height:48px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">✉</div><div><div style="font-size:.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Email</div><div style="color:var(--text-muted);font-size:.9rem">hello@opensky.re</div></div></div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="input-group"><label>First Name</label><input type="text" id="fname" placeholder="Alexandra" required></div>
+        <div class="input-group"><label>Last Name</label><input type="text" id="lname" placeholder="Chen" required></div>
+      </div>
+      <div class="input-group"><label>Email</label><input type="email" id="email" placeholder="you@email.com" required></div>
+      <div class="input-group"><label>Phone</label><input type="tel" id="phone" placeholder="+1 (310) 555-0000"></div>
+      <div class="input-group">
+        <label>Inquiry Type</label>
+        <select id="inquiry">
+          <option>Buy a Property</option>
+          <option>Sell a Property</option>
+          <option>Schedule a Viewing</option>
+          <option>Investment Advisory</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <div class="input-group"><label>Message</label><textarea id="message" placeholder="Tell us about your ideal property..."></textarea></div>
+      <button type="submit" class="submit-btn">Send Message ✦</button>
+    </form>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">OPEN<span>SKY</span></a>
+      <p class="footer-desc" style="margin-top:16px">Where extraordinary architecture meets unparalleled luxury. Open Sky Real Estate has been the benchmark of ultra-premium property advisory since 2006.</p>
+    </div>
+    <div class="footer-col"><h4>Properties</h4><ul><li><a href="#listings">All Listings</a></li><li><a href="#listings">Penthouses</a></li><li><a href="#listings">Villas</a></li><li><a href="#listings">Mansions</a></li><li><a href="#listings">Condos</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#agents">Our Agents</a></li><li><a href="#">News</a></li><li><a href="#">Careers</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#">Buyer Advisory</a></li><li><a href="#">Seller Advisory</a></li><li><a href="#calculator">Mortgage Tools</a></li><li><a href="#">Investment</a></li><li><a href="#">Concierge</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Open Sky Real Estate. All rights reserved.</p>
+    <div style="text-align:right">
+      <p style="color:var(--text-muted);font-size:.75rem;margin-bottom:4px">Privacy Policy · Terms of Service · Fair Housing Notice</p>
+      <p style="color:var(--gold);font-size:.75rem;letter-spacing:1.5px;font-weight:600;text-transform:uppercase">Website by WebTrivo Team</p>
+    </div>
+  </div>
+</footer>
+<!-- PROPERTY MODAL -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-gallery"><img id="mImg" src="" alt=""></div>
+    <div class="modal-body">
+      <div class="modal-meta">
+        <span class="card-badge" id="mBadge" style="position:static"></span>
+        <span class="meta-tag" id="mType"></span>
+        <span class="meta-tag" id="mYear"></span>
+      </div>
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-loc" id="mLoc"></div>
+      <div class="modal-price" id="mPrice"></div>
+      <div class="modal-specs">
+        <div class="spec" style="font-size:.9rem"><strong id="mBeds"></strong></div>
+        <div class="spec" style="font-size:.9rem"><strong id="mBaths"></strong></div>
+        <div class="spec" style="font-size:.9rem"><strong id="mSqft"></strong></div>
+        <div class="spec" style="font-size:.9rem"><strong id="mGarage"></strong></div>
+      </div>
+      <div class="modal-desc" id="mDesc"></div>
+      <div class="modal-features" id="mFeatures"></div>
+    </div>
+  </div>
+</div>
+<!-- TOAST -->
+<div class="toast" id="toast">✦ Message sent! We'll be in touch shortly.</div>
+<script src="data/properties.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" onload="initMap()"></script>
+<script src="app.js"></script>
+</body>
+</html>
